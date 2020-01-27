@@ -1,0 +1,26 @@
+{
+  "name": "git-rebase-branches",
+  "version": "0.1.0",
+  "description": "A simple script for rebasing your recent git branches",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balena-io-modules/git-rebase-branches.git"
+  },
+  "keywords": [
+    "ci",
+    "node_modules",
+    "npm",
+    "yarn",
+    "clean",
+    "install"
+  ],
+  "author": "Thodoris Greasidis <thodoris@balena.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/balena-io-modules/git-rebase-branches/issues"
+  },
+  "homepage": "https://github.com/balena-io-modules/git-rebase-branches#readme"
+}
