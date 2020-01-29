@@ -2,8 +2,18 @@
   "name": "git-rebase-branches",
   "version": "0.1.0",
   "description": "A simple script for rebasing your recent git branches",
+  "main": "src/index.js",
+  "bin": {
+    "git-rebase-branches": "bin/git-rebase-branches"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "lint": "resin-lint --typescript src/",
+    "prepare": "npm run build",
+    "prettify": "prettier --config ./node_modules/resin-lint/config/.prettierrc --write *.ts \"{bin,src}/**/*.ts\"",
+    "catch-unprettified": "npm run prettify -- --list-different",
+    "test": "npm run catch-unprettified && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -21,5 +31,16 @@
   "bugs": {
     "url": "https://github.com/balena-io-modules/git-rebase-branches/issues"
   },
-  "homepage": "https://github.com/balena-io-modules/git-rebase-branches#readme"
+  "homepage": "https://github.com/balena-io-modules/git-rebase-branches#readme",
+  "devDependencies": {
+    "@types/node": "^13.5.0",
+    "husky": "^4.0.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^1.19.1",
+    "resin-lint": "^3.1.1",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "date-fns": "^2.9.0"
+  }
 }
