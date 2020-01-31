@@ -1,6 +1,14 @@
 import * as dateFns from 'date-fns';
 import { git, gitMultilineResults } from './utils';
 
+const argvSet = new Set(process.argv.slice(2, Infinity));
+if (argvSet.has('--help')) {
+	console.log('git-rebase-branches');
+	console.log('git-rebase-branches --push');
+	console.log('git-rebase-branches --help');
+	process.exit(0);
+}
+
 const [currentUser] = gitMultilineResults('config user.email');
 console.log(`git config user.email: "${currentUser}"`);
 
@@ -43,6 +51,7 @@ branchList = branchList
 
 console.log(branchList);
 
+const succeded = [];
 const failed = [];
 
 for (const branchName of branchList) {
@@ -61,6 +70,8 @@ for (const branchName of branchList) {
 		failed.push(branchName);
 		continue;
 	}
+
+	succeded.push(branchName);
 }
 
 console.log('');
@@ -74,4 +85,12 @@ if (failed.length) {
 if (currentBranch !== 'master') {
 	console.log(`\ncheckout ${currentBranch}`);
 	git(`checkout ${currentBranch}`);
+}
+
+console.log('');
+if (argvSet.has('--push')) {
+	for (const branchName of succeded) {
+		console.log(`git push origin ${branchName} --force-with-lease`);
+		git(`push origin ${branchName} --force-with-lease`);
+	}
 }
