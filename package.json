@@ -2,10 +2,14 @@
   "name": "git-rebase-branches",
   "version": "0.3.0",
   "description": "A simple script for rebasing your recent git branches",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "bin": {
     "git-rebase-branches": "bin/git-rebase-branches"
   },
+  "files": [
+    "bin/",
+    "build/"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
