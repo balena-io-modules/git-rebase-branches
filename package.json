@@ -1,6 +1,6 @@
 {
   "name": "git-rebase-branches",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A simple script for rebasing your recent git branches",
   "main": "build/index.js",
   "bin": {
