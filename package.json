@@ -37,12 +37,12 @@
   },
   "homepage": "https://github.com/balena-io-modules/git-rebase-branches#readme",
   "devDependencies": {
-    "@types/node": "^13.5.0",
+    "@types/node": "^22.0.0",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "prettier": "^1.19.1",
     "resin-lint": "^3.1.1",
-    "typescript": "^3.7.5"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "date-fns": "^2.9.0"

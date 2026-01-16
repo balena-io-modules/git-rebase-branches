@@ -1,12 +1,38 @@
 import * as dateFns from 'date-fns';
 import { git, gitMultilineResults } from './utils';
 
-const argvSet = new Set(process.argv.slice(2, Infinity));
-if (argvSet.has('--help')) {
+const showHelp = () => {
 	console.log('git-rebase-branches');
+	console.log('git-rebase-branches --sinceMonths 2');
 	console.log('git-rebase-branches --push');
 	console.log('git-rebase-branches --help');
 	process.exit(0);
+};
+
+(() => {
+	const argvSet = new Set(process.argv.slice(2, Infinity));
+	if (argvSet.has('--help')) {
+		showHelp();
+	}
+})();
+
+const params: string[] = [];
+const flagsWithParams = new Set(['sinceMonths']);
+const flags: Record<string, unknown> = {};
+
+for (let i = 2; i < process.argv.length; i++) {
+	if (typeof process.argv[i] === 'string' && process.argv[i].startsWith('--')) {
+		const flagName = process.argv[i].slice(2);
+		if (flagsWithParams.has(flagName)) {
+			const value = process.argv[i + 1];
+			flags[flagName] = value;
+			i++;
+		} else {
+			flags[flagName] = true;
+		}
+	} else {
+		params.push(process.argv[i]);
+	}
 }
 
 const [currentUser] = gitMultilineResults('config user.email');
@@ -24,6 +50,8 @@ let branchList = gitMultilineResults(
 );
 const splitBranchInfoRegex = /^([^|]+)\|([^|]+)\|<(.*)>$/;
 
+const sinceMonths =
+	typeof flags.sinceMonths === 'string' ? parseInt(flags.sinceMonths, 10) : 2;
 branchList = branchList
 	.map(line => {
 		line = line.replace(/^'/, '').replace(/'$/, '');
@@ -34,7 +62,9 @@ branchList = branchList
 		}
 
 		const commitDate = new Date(res[2]);
-		if (!dateFns.isAfter(commitDate, dateFns.subMonths(new Date(), 2))) {
+		if (
+			!dateFns.isAfter(commitDate, dateFns.subMonths(new Date(), sinceMonths))
+		) {
 			return;
 		}
 
@@ -88,7 +118,7 @@ if (currentBranch !== 'master') {
 }
 
 console.log('');
-if (argvSet.has('--push')) {
+if (flags.push) {
 	for (const branchName of succeded) {
 		console.log(`git push origin ${branchName} --force-with-lease`);
 		git(`push origin ${branchName} --force-with-lease`);
