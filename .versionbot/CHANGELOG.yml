@@ -1,0 +1,47 @@
+- commits:
+    - subject: Move to flowzone
+      hash: 71025f72042e86da19f31f34883b96d4163a9cfa
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+    - subject: Add the --sinceMonths parameter
+      hash: aea360f5f45e84ec75d52e19e352208b49922596
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Thodoris Greasidis
+  version: 0.4.0
+  title: ""
+  date: 2026-01-16T08:38:51.061Z
+- version: 0.3.1
+  date: 2020-11-12T14:37:33Z
+  commits:
+    - hash: 15ad77a1017a93d41b45547686b31f68121d8bce
+      author: Thodoris Greasidis
+      footers:
+        change-type: patch
+        signed-off-by: Thodoris Greasidis <thodoris@balena.io>
+      subject: Fix the published files
+      body: ""
+- version: 0.3.0
+  date: 2020-01-31T21:44:59Z
+  commits:
+    - hash: 0c3ada85b9f28845eac035d986a3ef8812c1c82f
+      author: Thodoris Greasidis
+      footers:
+        change-type: minor
+        signed-off-by: Thodoris Greasidis <thodoris@balena.io>
+      subject: Add --push option
+      body: ""
+- version: 0.2.0
+  date: 2020-01-29T12:16:02Z
+  commits:
+    - hash: 68c1b20984ee8b483007d87712b7a2b656e89d43
+      author: Thodoris Greasidis
+      footers:
+        change-type: minor
+      subject: Initial code commit
+      body: ""
