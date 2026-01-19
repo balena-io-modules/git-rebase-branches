@@ -32,6 +32,9 @@
   ],
   "author": "Thodoris Greasidis <thodoris@balena.io>",
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24.11.0 <25"
+  },
   "bugs": {
     "url": "https://github.com/balena-io-modules/git-rebase-branches/issues"
   },
