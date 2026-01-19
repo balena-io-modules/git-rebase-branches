@@ -10,6 +10,7 @@ on:
     branches: [main, master]
 
 permissions:
+  contents: read
   id-token: write  # https://docs.npmjs.com/trusted-publishers
 
 jobs:
