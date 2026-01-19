@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
   id-token: write  # https://docs.npmjs.com/trusted-publishers
 
 jobs:
